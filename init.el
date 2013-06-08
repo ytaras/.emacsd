@@ -62,3 +62,4 @@ Position the cursor at its beginning, according to the current mode."
 
 (projectile-global-mode)
 (yas-global-mode)
+(global-linum-mode)
