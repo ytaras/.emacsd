@@ -9,8 +9,11 @@
 
 ;; Add in your own as you wish:
 (defvar my-packages
-  '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell
-                scala-mode2 solarized-theme)
+  '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-ruby
+                rinari markdown-mode+
+                scala-mode2 haskell-mode haml-mode coffee-mode
+                flymake-ruby flymake-haskell-multi flymake-haml flymake-coffee
+                solarized-theme)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -32,4 +35,6 @@
 (load-theme 'solarized-dark)
 
 (global-set-key [f12] (quote menu-bar-mode))
+
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 
