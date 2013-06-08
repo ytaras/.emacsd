@@ -10,7 +10,7 @@
 ;; Add in your own as you wish:
 (defvar my-packages
   '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-ruby
-                rinari markdown-mode+
+                rinari markdown-mode+ projectile yasnippet
                 scala-mode2 haskell-mode haml-mode coffee-mode
                 flymake-ruby flymake-haskell-multi flymake-haml flymake-coffee
                 solarized-theme)
@@ -35,6 +35,11 @@
 (load-theme 'solarized-dark)
 
 (global-set-key [f12] (quote menu-bar-mode))
+(global-set-key "" 'ibuffer)
+(global-set-key (kbd "C-x m") 'eshell)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 
+(projectile-global-mode)
+(yas-global-mode)

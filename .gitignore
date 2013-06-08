@@ -5,3 +5,5 @@
 .smex-items
 elpa/*
 places
+eshell/*
+projectile-bookmarks.eld
