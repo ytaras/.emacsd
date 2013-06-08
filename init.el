@@ -34,10 +34,29 @@
  )
 (load-theme 'solarized-dark)
 
+;;; TODO Separate to other file
+(defun smart-open-line-above ()
+  "Insert an empty line above the current line.
+Position the cursor at it's beginning, according to the current mode."
+  (interactive)
+  (move-beginning-of-line nil)
+  (newline-and-indent)
+  (forward-line -1)
+  (funcall indent-line-function))
+
+(defun smart-open-line ()
+  "Insert an empty line after the current line.
+Position the cursor at its beginning, according to the current mode."
+  (interactive)
+  (move-end-of-line nil)
+  (newline-and-indent))
+
 (global-set-key [f12] (quote menu-bar-mode))
 (global-set-key "" 'ibuffer)
 (global-set-key (kbd "C-x m") 'eshell)
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key [S-return] (quote smart-open-line))
+(global-set-key [C-S-return] (quote smart-open-line-above))
 
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 

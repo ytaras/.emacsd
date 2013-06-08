@@ -7,3 +7,4 @@ elpa/*
 places
 eshell/*
 projectile-bookmarks.eld
+var/pcache/*
