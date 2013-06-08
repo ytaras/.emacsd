@@ -2,4 +2,6 @@
 *~
 
 # Compiled list files
-*.elc
+.smex-items
+elpa/*
+places
