@@ -1,0 +1,20 @@
+
+;; ----- smex-history -----
+(
+ menu-bar-mode
+ load-theme
+ package-install
+ eshell
+ magit-status
+ cd
+ 5x5
+)
+
+;; ----- smex-data -----
+(
+ (magit-status . 1)
+ (menu-bar-mode . 2)
+ (package-install . 3)
+ (eshell . 1)
+ (load-theme . 2)
+)
