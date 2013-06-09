@@ -51,6 +51,23 @@ Position the cursor at its beginning, according to the current mode."
   (move-end-of-line nil)
   (newline-and-indent))
 
+;;; TODO This should be done in one func with an argument
+(defun split-window-func-vert ()
+  "Loaded from Wikipedia"
+    (interactive)
+    (split-window-vertically)
+    (set-window-buffer (next-window) (other-buffer)))
+(defun split-window-func-horiz ()
+  "Loaded from Wikipedia"
+    (interactive)
+    (split-window-horizontally)
+    (set-window-buffer (next-window) (other-buffer)))
+
+(global-set-key "\C-x2" 'split-window-func-vert )
+(global-set-key "\C-x3" 'split-window-func-horiz )
+
+
+
 (global-set-key [f12] (quote menu-bar-mode))
 (global-set-key "" 'ibuffer)
 (global-set-key (kbd "C-x m") 'eshell)
@@ -63,3 +80,9 @@ Position the cursor at its beginning, according to the current mode."
 (projectile-global-mode)
 (yas-global-mode)
 (global-linum-mode)
+(global-whitespace-mode)
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(load-file (let ((coding-system-for-read 'utf-8))
+             (shell-command-to-string "~/.cabal/bin/agda-mode locate")))
