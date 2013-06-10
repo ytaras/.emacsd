@@ -73,6 +73,11 @@ Position the cursor at its beginning, according to the current mode."
 (global-set-key [S-return] (quote smart-open-line))
 (global-set-key [C-S-return] (quote smart-open-line-above))
 
+(defun dont-kill-emacs ()
+      (interactive)
+      (error (substitute-command-keys "To exit emacs: \\[kill-emacs]")))
+(global-set-key "\C-x\C-c" 'dont-kill-emacs)
+
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 
 (projectile-global-mode)
@@ -82,5 +87,6 @@ Position the cursor at its beginning, according to the current mode."
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(load-file (let ((coding-system-for-read 'utf-8))
-             (shell-command-to-string "~/.cabal/bin/agda-mode locate")))
+(if (file-exists-p "~/.cabal/bin/agda-mode")
+    (load-file (let ((coding-system-for-read 'utf-8))
+             (shell-command-to-string "~/.cabal/bin/agda-mode locate"))))
