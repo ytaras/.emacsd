@@ -66,8 +66,6 @@ Position the cursor at its beginning, according to the current mode."
 (global-set-key "\C-x2" 'split-window-func-vert )
 (global-set-key "\C-x3" 'split-window-func-horiz )
 
-
-
 (global-set-key [f12] (quote menu-bar-mode))
 (global-set-key "" 'ibuffer)
 (global-set-key (kbd "C-x m") 'eshell)
