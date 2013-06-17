@@ -93,3 +93,4 @@ Position the cursor at its beginning, according to the current mode."
 
 (setq tab-width 2)
 (setq coffee-tab-width 2)
+(pomodoro-add-to-mode-line)
