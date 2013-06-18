@@ -90,3 +90,8 @@ Position the cursor at its beginning, according to the current mode."
 (if (file-exists-p "~/.cabal/bin/agda-mode")
     (load-file (let ((coding-system-for-read 'utf-8))
              (shell-command-to-string "~/.cabal/bin/agda-mode locate"))))
+
+(if (file-exists-p "~/quicklisp/slime-helper.el")
+    (load (expand-file-name "~/quicklisp/slime-helper.el"))
+  ;; Replace "sbcl" with the path to your implementation
+  (setq inferior-lisp-program "sbcl"))
