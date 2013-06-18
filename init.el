@@ -10,7 +10,7 @@
 ;; Add in your own as you wish:
 (defvar my-packages
   '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-ruby
-                rinari markdown-mode+ projectile yasnippet
+                rinari markdown-mode+ projectile yasnippet pomodoro
                 scala-mode2 haskell-mode haml-mode coffee-mode
                 flymake-ruby flymake-haskell-multi flymake-haml flymake-coffee
                 solarized-theme)
@@ -95,3 +95,7 @@ Position the cursor at its beginning, according to the current mode."
     (load (expand-file-name "~/quicklisp/slime-helper.el"))
   ;; Replace "sbcl" with the path to your implementation
   (setq inferior-lisp-program "sbcl"))
+
+(setq tab-width 2)
+(setq coffee-tab-width 2)
+(pomodoro-add-to-mode-line)
