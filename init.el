@@ -11,7 +11,7 @@
 (defvar my-packages
   '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-ruby
                 rinari markdown-mode+ projectile yasnippet pomodoro
-                scala-mode2 haskell-mode haml-mode coffee-mode
+                scala-mode2 haskell-mode haml-mode coffee-mode tuareg
                 flymake-ruby flymake-haskell-multi flymake-haml flymake-coffee
                 solarized-theme)
   "A list of packages to ensure are installed at launch.")
@@ -143,6 +143,36 @@ Position the cursor at its beginning, according to the current mode."
                "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
               ("h" "Habit" entry (file "~/git/org/refile.org")
                "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"<%Y-%m-%d %a .+1d/3d>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
+
+; Targets include this file and any file contributing to the agenda - up to 9 levels deep
+(setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                 (org-agenda-files :maxlevel . 9))))
+
+; Use full outline paths for refile targets - we file directly with IDO
+(setq org-refile-use-outline-path t)
+
+; Targets complete directly with IDO
+(setq org-outline-path-complete-in-steps nil)
+
+; Allow refile to create parent tasks with confirmation
+(setq org-refile-allow-creating-parent-nodes (quote confirm))
+
+; Use IDO for both buffer and file completion and ido-everywhere to t
+(setq org-completion-use-ido t)
+(setq ido-everywhere t)
+(setq ido-max-directory-size 100000)
+(ido-mode (quote both))
+; Use the current window when visiting files and buffers with ido
+(setq ido-default-file-method 'selected-window)
+(setq ido-default-buffer-method 'selected-window)
+
+;;;; Refile settings
+; Exclude DONE state tasks from refile targets
+(defun bh/verify-refile-target ()
+  "Exclude todo keywords with a done state from refile targets"
+  (not (member (nth 2 (org-heading-components)) org-done-keywords)))
+
+(setq org-refile-target-verify-function 'bh/verify-refile-target)
 
 (setq org-mobile-inbox-for-pull "~/Dropbox/git/org/flagged.org")
 ;; Set to <your Dropbox root directory>/MobileOrg.
