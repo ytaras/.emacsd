@@ -25,7 +25,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
+ '(custom-safe-themes (quote ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(tuareg-support-metaocaml t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -131,17 +132,17 @@ Position the cursor at its beginning, according to the current mode."
 (setq org-capture-templates
       (quote (("t" "todo" entry (file "~/git/org/refile.org")
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
-              ("r" "respond" entry (file "~/git/org/refile.org")
+              ("r" "respond" entry (file "~/git/org/flagged.org")
                "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
-              ("n" "note" entry (file "~/git/org/refile.org")
+              ("n" "note" entry (file "~/git/org/flagged.org")
                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
               ("j" "Journal" entry (file+datetree "~/git/org/diary.org")
                "* %?\n%U\n" :clock-in t :clock-resume t)
-              ("w" "org-protocol" entry (file "~/git/org/refile.org")
+              ("w" "org-protocol" entry (file "~/git/org/flagged.org")
                "* TODO Review %c\n%U\n" :immediate-finish t)
-              ("p" "Phone call" entry (file "~/git/org/refile.org")
+              ("p" "Phone call" entry (file "~/git/org/flagged.org")
                "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
-              ("h" "Habit" entry (file "~/git/org/refile.org")
+              ("h" "Habit" entry (file "~/git/org/flagged.org")
                "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"<%Y-%m-%d %a .+1d/3d>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
 
 ; Targets include this file and any file contributing to the agenda - up to 9 levels deep
@@ -178,5 +179,5 @@ Position the cursor at its beginning, according to the current mode."
 ;; Set to <your Dropbox root directory>/MobileOrg.
 (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 (setq org-agenda-files (quote ("~/Dropbox/git/org")))
-(setq org-default-notes-file "~/Dropbox/git/org/refile.org")
+(setq org-default-notes-file "~/Dropbox/git/org/flagged.org")
 (setq org-directory "~/Dropbox/git/org")
