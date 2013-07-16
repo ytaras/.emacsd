@@ -8,3 +8,6 @@ places
 eshell/*
 projectile-bookmarks.eld
 var/pcache/*
+/.org-id-locations
+/session.*
+/tramp
