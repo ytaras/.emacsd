@@ -106,6 +106,16 @@ Position the cursor at its beginning, according to the current mode."
 ;;;
 ;;; Org Mode
 ;;;
+
+(if (eq system-type 'windows-nt)
+    (progn
+      (setq dropbox-path "C:/Users/ytaras/Dropbox"))
+    (progn
+      (setq dropbox-path "~/Dropbox")))
+
+(defun dropbox-file-path (path)
+  (concat 'string dropbox-path path))
+
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
 (require 'org)
 ;;
@@ -176,6 +186,8 @@ Position the cursor at its beginning, according to the current mode."
   (not (member (nth 2 (org-heading-components)) org-done-keywords)))
 
 (setq org-refile-target-verify-function 'bh/verify-refile-target)
+
+
 
 (setq org-mobile-inbox-for-pull "~/Dropbox/git/org/flagged.org")
 ;; Set to <your Dropbox root directory>/MobileOrg.
