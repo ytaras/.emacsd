@@ -13,7 +13,7 @@
                 rinari markdown-mode+ projectile yasnippet pomodoro
                 scala-mode2 haskell-mode haml-mode coffee-mode tuareg
                 flymake-ruby flymake-haskell-multi flymake-haml flymake-coffee
-                solarized-theme)
+                solarized-theme nzenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -25,7 +25,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(custom-safe-themes (quote ("4c9ba94db23a0a3dea88ee80f41d9478c151b07cb6640b33bfc38be7c2415cc4" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(haskell-program-name "~/.cabal/bin/cabal-dev ghci")
  '(haskell-tags-on-save t)
  '(tuareg-support-metaocaml t))
@@ -35,7 +35,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(load-theme 'solarized-dark)
+(load-theme 'nzenburn)
 
 ;;; TODO Separate to other file
 (defun smart-open-line-above ()
@@ -106,6 +106,16 @@ Position the cursor at its beginning, according to the current mode."
 ;;;
 ;;; Org Mode
 ;;;
+
+(if (eq system-type 'windows-nt)
+    (progn
+      (setq dropbox-path "C:/Users/ytaras/Dropbox"))
+    (progn
+      (setq dropbox-path "~/Dropbox")))
+
+(defun dropbox-file-path (path)
+  (concat 'string dropbox-path path))
+
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
 (require 'org)
 ;;
@@ -176,6 +186,8 @@ Position the cursor at its beginning, according to the current mode."
   (not (member (nth 2 (org-heading-components)) org-done-keywords)))
 
 (setq org-refile-target-verify-function 'bh/verify-refile-target)
+
+
 
 (setq org-mobile-inbox-for-pull "~/Dropbox/git/org/flagged.org")
 ;; Set to <your Dropbox root directory>/MobileOrg.
