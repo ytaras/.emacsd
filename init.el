@@ -10,7 +10,7 @@
 ;; Add in your own as you wish:
 (defvar my-packages
   '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-ruby
-                rinari markdown-mode+ projectile yasnippet pomodoro
+                rinari markdown-mode+ projectile yasnippet pomodoro sr-speedbar
                 scala-mode2 haskell-mode haml-mode coffee-mode tuareg
                 flymake-ruby flymake-haskell-multi flymake-haml flymake-coffee
                 solarized-theme nzenburn-theme)
@@ -193,3 +193,6 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
     (setenv "PATH" path-from-shell)
     (setq exec-path (split-string path-from-shell path-separator))))
 (set-exec-path-from-shell-PATH)
+
+(require 'sr-speedbar)
+(global-set-key (kbd "\<f9\>") 'sr-speedbar-toggle)
