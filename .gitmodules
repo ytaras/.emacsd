@@ -1,0 +1,3 @@
+[submodule "modules/idris-mode"]
+	path = modules/idris-mode
+	url = git@github.com:idris-hackers/idris-mode.git

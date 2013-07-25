@@ -106,6 +106,16 @@ Position the cursor at its beginning, according to the current mode."
 ;;;
 ;;; Org Mode
 ;;;
+
+(if (eq system-type 'windows-nt)
+    (progn
+      (setq dropbox-path "C:/Users/ytaras/Dropbox"))
+    (progn
+      (setq dropbox-path "~/Dropbox")))
+
+(defun dropbox-file-path (path)
+  (concat 'string dropbox-path path))
+
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
 (require 'org)
 ;;
@@ -177,6 +187,8 @@ Position the cursor at its beginning, according to the current mode."
 
 (setq org-refile-target-verify-function 'bh/verify-refile-target)
 
+
+
 (setq org-mobile-inbox-for-pull "~/Dropbox/git/org/flagged.org")
 ;; Set to <your Dropbox root directory>/MobileOrg.
 (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
@@ -200,3 +212,6 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (setq make-backup-files         nil) ; Don't want any backup files
 (setq auto-save-list-file-name  nil) ; Don't want any .saves files
 (setq auto-save-default         nil) ; Don't want any auto saving
+(add-to-list 'load-path "~/.emacs.d/modules/idris-mode")
+(require 'idris-mode)
+(require 'idris-mode)
