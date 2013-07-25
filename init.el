@@ -196,3 +196,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 
 (require 'sr-speedbar)
 (global-set-key (kbd "\<f9\>") 'sr-speedbar-toggle)
+
+(setq make-backup-files         nil) ; Don't want any backup files
+(setq auto-save-list-file-name  nil) ; Don't want any .saves files
+(setq auto-save-default         nil) ; Don't want any auto saving
