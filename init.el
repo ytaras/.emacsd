@@ -212,6 +212,11 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (setq make-backup-files         nil) ; Don't want any backup files
 (setq auto-save-list-file-name  nil) ; Don't want any .saves files
 (setq auto-save-default         nil) ; Don't want any auto saving
-(add-to-list 'load-path "~/.emacs.d/modules/idris-mode")
-(require 'idris-mode)
-(require 'idris-mode)
+
+(add-to-list 'load-path "~/.emacs.d/modules/idris-mode/")
+(require 'idris-syntax)
+
+(define-derived-mode custom-idris-mode fundamental-mode "Hacked Idris"
+  :syntax-table idris-syntax-table
+  (set (make-local-variable 'font-lock-defaults)
+       idris-font-lock-defaults))
