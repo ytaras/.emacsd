@@ -213,7 +213,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 (setq auto-save-list-file-name  nil) ; Don't want any .saves files
 (setq auto-save-default         nil) ; Don't want any auto saving
 
-(global-set-key (kbd "C-SPC") 'set-mark-command)
 (setq ergoemacs-theme "lvl2")
 (setq ergoemacs-keyboard-layout "us")
 (ergoemacs-mode 1)
+(global-set-key (kbd "C-SPC") 'set-mark-command)
